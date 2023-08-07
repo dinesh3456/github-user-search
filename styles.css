@@ -11,6 +11,10 @@ body {
   padding: 20px;
 }
 
+.error{
+    color:red;
+}
+
 h1 {
   text-align: center;
   margin-bottom: 20px;
@@ -38,6 +42,7 @@ h1 {
   cursor: pointer;
 }
 
+
 .user-profile {
   text-align: center;
   background-color: white;
@@ -47,11 +52,13 @@ h1 {
 }
 
 #avatar {
-  width: 100px;
-  height: 100px;
+  width: 120px;
+  height: 120px;
   border-radius: 50%;
   margin: 0 auto 10px;
   display: block;
+  object-fit: cover;
+  border: 3px solid black;
 }
 
 #username-display {
