@@ -36,7 +36,28 @@ function display(userData) {
   image.src = userData.avatar_url;
   usernameDisplay.textContent = userData.login;
   followers.textContent = `Followers: ${userData.followers}`;
-  repositories.textContent = `Repositories: ${userData.public_repos}`;
+  repositories.textContent = "Repositories: ";
+  const repoList = document.createElement("ul");
+  fetch(userData.repos_url)
+    .then((response) => response.json())
+    .then((repositoriesData) => {
+      repositoriesData.forEach((repo) => {
+        // Create a list item for each repository
+        const repoItem = document.createElement("li");
+
+        // Set the text content of the list item to the repository name
+        repoItem.textContent = repo.name;
+
+        // Append the list item to the repository list
+        repoList.appendChild(repoItem);
+      });
+
+      // Append the list of repository names to the "repositories" element
+      repositories.appendChild(repoList);
+    })
+    .catch((error) => {
+      console.error("Error fetching repositories:", error);
+    });
 }
 
 function displayError(message) {
